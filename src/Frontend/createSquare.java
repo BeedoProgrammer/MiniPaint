@@ -5,13 +5,13 @@ import java.awt.*;
 import java.util.*;
 import javax.swing.*;
 
-public class createSquare extends javax.swing.JFrame {
+public class createSquare extends javax.swing.JDialog {
 
     private Graphics canvas;
     private JComboBox<String> items;
     
-    public createSquare(String title, Graphics canvas, JComboBox<String> items) {
-        super(title);
+    public createSquare(mainWindow main, String title, Graphics canvas, JComboBox<String> items) {
+        super(main, title, true);
         this.canvas = canvas;
         this.items = items;
         initComponents();

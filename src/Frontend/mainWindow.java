@@ -170,28 +170,28 @@ public class mainWindow extends javax.swing.JFrame {
 
     private void squareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_squareActionPerformed
         // TODO add your handling code here:
-        createSquare square = new createSquare("Draw Square", canvas.getGraphics(), items);
+        createSquare square = new createSquare(this, "Draw Square", canvas.getGraphics(), items);
         square.setLocationRelativeTo(null);
         square.setVisible(true);
     }//GEN-LAST:event_squareActionPerformed
 
     private void circleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_circleActionPerformed
         // TODO add your handling code here:
-        createCircle circle = new createCircle("Draw Circle", canvas.getGraphics(), items);
+        createCircle circle = new createCircle(this, "Draw Circle", canvas.getGraphics(), items);
         circle.setLocationRelativeTo(null);
         circle.setVisible(true);
     }//GEN-LAST:event_circleActionPerformed
 
     private void rectangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rectangleActionPerformed
         // TODO add your handling code here:
-        createRectangle rectangle = new createRectangle("Draw Rectangle", canvas.getGraphics(), items);
+        createRectangle rectangle = new createRectangle(this, "Draw Rectangle", canvas.getGraphics(), items);
         rectangle.setLocationRelativeTo(null);
         rectangle.setVisible(true);
     }//GEN-LAST:event_rectangleActionPerformed
 
     private void lineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lineActionPerformed
         // TODO add your handling code here:
-        createLine line = new createLine("Draw Line Segment", canvas.getGraphics(), items);
+        createLine line = new createLine(this, "Draw Line Segment", canvas.getGraphics(), items);
         line.setLocationRelativeTo(null);
         line.setVisible(true);
     }//GEN-LAST:event_lineActionPerformed

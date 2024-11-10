@@ -5,13 +5,13 @@ import java.awt.*;
 import java.util.*;
 import javax.swing.*;
 
-public class createCircle extends javax.swing.JFrame {
+public class createCircle extends javax.swing.JDialog {
 
     private Graphics canvas;
     private JComboBox<String> items;
     
-    public createCircle(String title, Graphics canvas, JComboBox<String> items) {
-        super(title);
+    public createCircle(mainWindow main, String title, Graphics canvas, JComboBox<String> items) {
+        super(main, title, true);
         this.canvas = canvas;
         this.items = items;
         initComponents();
