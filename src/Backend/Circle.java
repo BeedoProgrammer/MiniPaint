@@ -13,10 +13,10 @@ public class Circle extends template {
     public void draw(Graphics canvas){
         if(this.getProperties() != null && this.getProperties().containsKey("radius")){
             int radius = getProperties().get("radius").intValue();
+            canvas.setColor(getFillColor());
+            canvas.fillOval(getPosition().x, getPosition().y, radius, radius);
             canvas.setColor(getColor());
             canvas.drawOval(getPosition().x, getPosition().y, radius, radius);
-            canvas.setColor(getFillColor());
-            canvas.fillOval(getPosition().x + 1, getPosition().y + 1, radius - 1, radius - 1);
         }
     }
 }

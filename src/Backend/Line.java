@@ -13,8 +13,7 @@ public class Line extends template {
     public void draw(Graphics canvas){
         if(this.getProperties() != null && this.getProperties().containsKey("x2") && this.getProperties().containsKey("y2")){
             canvas.setColor(getColor());
-            canvas.drawLine(getPosition().x, getPosition().y, getProperties().get("x2").intValue(), getProperties().get("y2").intValue());
-            canvas.setColor(getFillColor());
+            canvas.drawLine(getPosition().x, getPosition().y, getProperties().get("x2").intValue(), getProperties().get("y2").intValue()); 
         }
     }
 }
