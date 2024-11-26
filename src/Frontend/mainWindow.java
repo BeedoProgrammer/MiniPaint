@@ -28,6 +28,10 @@ public class mainWindow extends javax.swing.JFrame {
         delete = new javax.swing.JButton();
         items = new javax.swing.JComboBox<>();
         canvas = new java.awt.Canvas();
+        resize = new javax.swing.JButton();
+        move = new javax.swing.JButton();
+        save = new javax.swing.JButton();
+        load = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,25 +106,77 @@ public class mainWindow extends javax.swing.JFrame {
         canvas.setBackground(new java.awt.Color(255, 255, 255));
         canvas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        resize.setBackground(new java.awt.Color(0, 0, 0));
+        resize.setForeground(new java.awt.Color(255, 255, 255));
+        resize.setText("Resize");
+        resize.setFocusPainted(false);
+        resize.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resizeActionPerformed(evt);
+            }
+        });
+
+        move.setBackground(new java.awt.Color(0, 0, 0));
+        move.setForeground(new java.awt.Color(255, 255, 255));
+        move.setText("Move");
+        move.setFocusPainted(false);
+        move.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moveActionPerformed(evt);
+            }
+        });
+
+        save.setBackground(new java.awt.Color(0, 0, 0));
+        save.setForeground(new java.awt.Color(255, 255, 255));
+        save.setText("Save");
+        save.setFocusPainted(false);
+        save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveActionPerformed(evt);
+            }
+        });
+
+        load.setBackground(new java.awt.Color(0, 0, 0));
+        load.setForeground(new java.awt.Color(255, 255, 255));
+        load.setText("Load");
+        load.setFocusPainted(false);
+        load.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(color)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(delete))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(24, 24, 24)
-                            .addComponent(items, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(8, 8, 8))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(items, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(save)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(load)))
+                        .addGap(4, 4, 4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(color)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(delete))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(resize, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(move, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -141,27 +197,35 @@ public class mainWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(rectangle))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(circle, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(line, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(square, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(rectangle))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(circle, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(line, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(square, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(canvas, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(save)
+                            .addComponent(load))
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(items, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(color)
-                            .addComponent(delete)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(canvas, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(delete))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(resize)
+                            .addComponent(move))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -218,6 +282,7 @@ public class mainWindow extends javax.swing.JFrame {
             
             canvas.getGraphics().clearRect(0, 0, getWidth(), getHeight());
             draw.refresh(canvas.getGraphics());
+            num--;
         }
         else
             JOptionPane.showMessageDialog(rootPane, "No shapes to delete");
@@ -227,6 +292,57 @@ public class mainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_itemsActionPerformed
 
+    private void resizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resizeActionPerformed
+        // TODO add your handling code here:
+        if (items.getModel().getSize() != 0){
+            int index = items.getSelectedIndex();
+            Backend.Shape[] shapes = mainWindow.draw.getShapes();
+            String name = (String) items.getItemAt(index);
+            
+            if(name.charAt(0) == 'L'){
+                ResizeLine line = new ResizeLine(this, "Resize Line Segment", canvas.getGraphics(), items);
+                line.setLocationRelativeTo(null);
+                line.setVisible(true);
+            }
+            else if(name.charAt(0) == 'S'){
+                ResizeSquare square = new ResizeSquare(this, "Resize Square", canvas.getGraphics(), items);
+                square.setLocationRelativeTo(null);
+                square.setVisible(true);
+            }
+            else if(name.charAt(0) == 'C'){
+                ResizeCircle circle = new ResizeCircle(this, "Resize Circle", canvas.getGraphics(), items);
+                circle.setLocationRelativeTo(null);
+                circle.setVisible(true);
+            }
+            else if(name.charAt(0) == 'R'){
+                ResizeRectangle rectangle = new ResizeRectangle(this, "Resize Rectangle", canvas.getGraphics(), items);
+                rectangle.setLocationRelativeTo(null);
+                rectangle.setVisible(true);
+            }
+        }
+        else
+            JOptionPane.showMessageDialog(rootPane, "No shapes to resize");
+    }//GEN-LAST:event_resizeActionPerformed
+
+    private void moveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveActionPerformed
+        // TODO add your handling code here:
+        if (items.getModel().getSize() != 0){
+            Move move = new Move(this, "Move", canvas.getGraphics(), items);
+            move.setLocationRelativeTo(null);
+            move.setVisible(true);
+        }
+        else
+            JOptionPane.showMessageDialog(rootPane, "No shapes to move");
+    }//GEN-LAST:event_moveActionPerformed
+
+    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_saveActionPerformed
+
+    private void loadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loadActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas;
     private javax.swing.JButton circle;
@@ -235,7 +351,11 @@ public class mainWindow extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> items;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton line;
+    private javax.swing.JButton load;
+    private javax.swing.JButton move;
     private javax.swing.JButton rectangle;
+    private javax.swing.JButton resize;
+    private javax.swing.JButton save;
     private javax.swing.JButton square;
     // End of variables declaration//GEN-END:variables
 }
