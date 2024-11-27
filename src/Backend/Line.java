@@ -16,4 +16,11 @@ public class Line extends template {
             canvas.drawLine(getPosition().x, getPosition().y, getProperties().get("x2").intValue(), getProperties().get("y2").intValue()); 
         }
     }
+    
+    @Override
+    public String toString(){
+        String str = super.toString();
+        str = str + "," + String.valueOf(getProperties().get("x2")) + "," + String.valueOf(getProperties().get("y2"));
+        return str;
+    }
 }

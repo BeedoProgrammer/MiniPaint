@@ -16,4 +16,6 @@ public interface Shape {
     public Color getFillColor();
     
     public void draw(Graphics canvas);
+    
+    public String toString();
 }

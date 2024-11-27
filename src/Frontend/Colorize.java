@@ -3,13 +3,13 @@ package Frontend;
 import java.awt.*;
 import javax.swing.*;
 
-public class Colorize extends javax.swing.JFrame {
+public class Colorize extends javax.swing.JDialog {
 
     private Graphics canvas;
     private JComboBox<String> items;
     
-    public Colorize(String title, Graphics canvas, JComboBox<String> items) {
-        super(title);
+    public Colorize(mainWindow main, String title, Graphics canvas, JComboBox<String> items) {
+        super(main, title, true);
         this.canvas = canvas;
         this.items = items;
         initComponents();

@@ -1,7 +1,10 @@
 package Frontend;
 
 import Backend.*;
-import javax.swing.JOptionPane;
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.*;
 
 public class mainWindow extends javax.swing.JFrame {
     
@@ -263,7 +266,7 @@ public class mainWindow extends javax.swing.JFrame {
     private void colorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorActionPerformed
         // TODO add your handling code here:
         if (items.getModel().getSize() != 0){
-            Colorize colorize = new Colorize("Colorize", canvas.getGraphics(), items);
+            Colorize colorize = new Colorize(this, "Colorize", canvas.getGraphics(), items);
             colorize.setLocationRelativeTo(null);
             colorize.setVisible(true);
         }
@@ -337,6 +340,38 @@ public class mainWindow extends javax.swing.JFrame {
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
+        if (items.getModel().getSize() != 0){
+            int count = items.getItemCount();
+            String str, name;
+            Backend.Shape[] shapes = mainWindow.draw.getShapes();
+            
+            JFileChooser choose = new JFileChooser();
+            choose.setDialogTitle("Save Shapes");
+            int returnValue = choose.showSaveDialog(null);
+        
+            if (returnValue == JFileChooser.APPROVE_OPTION){
+                FileWriter writer = null;
+                try {
+                    File save = choose.getSelectedFile();
+                    writer = new FileWriter(save);
+                    for (int i = 0; i < count; i++) {
+                        name = (String) items.getItemAt(i);
+                        str = shapes[i].toString() + "," + name;
+                        writer.write(str);
+                    }   JOptionPane.showMessageDialog(rootPane, "Shapes saved successfully!");
+                } catch (IOException ex) {
+                    Logger.getLogger(mainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                } finally {
+                    try {
+                        writer.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(mainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }
+        else
+            JOptionPane.showMessageDialog(rootPane, "No shapes to save");
     }//GEN-LAST:event_saveActionPerformed
 
     private void loadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadActionPerformed

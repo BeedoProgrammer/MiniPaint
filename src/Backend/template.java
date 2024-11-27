@@ -60,4 +60,10 @@ public abstract class template implements Shape {
     public void draw(Graphics canvas){
         
     }
+    
+    @Override
+    public String toString(){
+        String str = "\n" + String.valueOf(getFillColor()) + "," + String.valueOf(getColor()) + "," + String.valueOf(getPosition().x) + "," + String.valueOf(getPosition().y);
+        return str;
+    }
 }

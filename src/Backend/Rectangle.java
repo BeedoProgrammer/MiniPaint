@@ -20,4 +20,11 @@ public class Rectangle extends template {
             canvas.drawRect(getPosition().x, getPosition().y, length, width);
         }
     }
+    
+    @Override
+    public String toString(){
+        String str = super.toString();
+        str = str + "," + String.valueOf(getProperties().get("length")) + "," + String.valueOf(getProperties().get("width"));
+        return str;
+    }
 }

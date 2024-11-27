@@ -19,4 +19,11 @@ public class Circle extends template {
             canvas.drawOval(getPosition().x, getPosition().y, radius, radius);
         }
     }
+    
+    @Override
+    public String toString(){
+        String str = super.toString();
+        str = str + "," + String.valueOf(getProperties().get("radius"));
+        return str;
+    }
 }
