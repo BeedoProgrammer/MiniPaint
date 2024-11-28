@@ -7,10 +7,10 @@ import javax.swing.*;
 
 public class createCircle extends javax.swing.JDialog {
 
-    private Graphics canvas;
+    private JPanel canvas;
     private JComboBox<String> items;
     
-    public createCircle(mainWindow main, String title, Graphics canvas, JComboBox<String> items) {
+    public createCircle(mainWindow main, String title, JPanel canvas, JComboBox<String> items) {
         super(main, title, true);
         this.canvas = canvas;
         this.items = items;
@@ -101,6 +101,8 @@ public class createCircle extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Enter all info.");
         else if(Integer.parseInt(posx.getText()) < 0 || Integer.parseInt(posy.getText()) < 0 || Double.parseDouble(radius.getText()) <= 0)
             JOptionPane.showMessageDialog(rootPane, "Enter positive numbers");
+        else if(Integer.parseInt(posx.getText()) > canvas.getWidth() || Integer.parseInt(posy.getText()) > canvas.getHeight())
+            JOptionPane.showMessageDialog(rootPane, "Out of range");
         else{
             Point position = new Point(Integer.parseInt(posx.getText()), Integer.parseInt(posy.getText()));
             Map<String, Double> properties = new HashMap<>();
@@ -108,7 +110,7 @@ public class createCircle extends javax.swing.JDialog {
         
             Circle circle = new Circle(position, properties);
             mainWindow.draw.addShape(circle);
-            circle.draw(canvas);
+            circle.draw(canvas.getGraphics());
      
             items.addItem("Circle" + mainWindow.num);
             mainWindow.num++;

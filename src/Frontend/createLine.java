@@ -7,10 +7,10 @@ import javax.swing.*;
 
 public class createLine extends javax.swing.JDialog {
 
-    private Graphics canvas;
+    private JPanel canvas;
     private JComboBox<String> items;
     
-    public createLine(mainWindow main, String title, Graphics canvas, JComboBox<String> items) {
+    public createLine(mainWindow main, String title, JPanel canvas, JComboBox<String> items) {
         super(main, title, true);
         this.canvas = canvas;
         this.items = items;
@@ -114,6 +114,8 @@ public class createLine extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Enter all info.");
         else if(Integer.parseInt(posx1.getText()) < 0 || Integer.parseInt(posy1.getText()) < 0 || Integer.parseInt(posx2.getText()) < 0 || Integer.parseInt(posy2.getText()) < 0)
             JOptionPane.showMessageDialog(rootPane, "Enter positive numbers");
+        else if(Integer.parseInt(posx1.getText()) > canvas.getWidth() || Integer.parseInt(posy1.getText()) > canvas.getHeight() || Integer.parseInt(posx2.getText()) > canvas.getWidth() || Integer.parseInt(posy2.getText()) > canvas.getHeight())
+            JOptionPane.showMessageDialog(rootPane, "Out of range");
         else{
             Point position = new Point(Integer.parseInt(posx1.getText()), Integer.parseInt(posy1.getText()));
             Map<String, Double> properties = new HashMap<>();
@@ -122,7 +124,7 @@ public class createLine extends javax.swing.JDialog {
         
             Line line = new Line(position, properties);
             mainWindow.draw.addShape(line);
-            line.draw(canvas);
+            line.draw(canvas.getGraphics());
      
             items.addItem("Line Segment" + mainWindow.num);
             mainWindow.num++;

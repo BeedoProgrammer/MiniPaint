@@ -7,10 +7,10 @@ import javax.swing.*;
 
 public class createSquare extends javax.swing.JDialog {
 
-    private Graphics canvas;
+    private JPanel canvas;
     private JComboBox<String> items;
     
-    public createSquare(mainWindow main, String title, Graphics canvas, JComboBox<String> items) {
+    public createSquare(mainWindow main, String title, JPanel canvas, JComboBox<String> items) {
         super(main, title, true);
         this.canvas = canvas;
         this.items = items;
@@ -101,6 +101,8 @@ public class createSquare extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Enter all info.");
         else if(Integer.parseInt(posx.getText()) < 0 || Integer.parseInt(posy.getText()) < 0 || Double.parseDouble(length.getText()) <= 0)
             JOptionPane.showMessageDialog(rootPane, "Enter positive numbers");
+        else if(Integer.parseInt(posx.getText()) > canvas.getWidth() || Integer.parseInt(posy.getText()) > canvas.getHeight())
+            JOptionPane.showMessageDialog(rootPane, "Out of range");
         else{
             Point position = new Point(Integer.parseInt(posx.getText()), Integer.parseInt(posy.getText()));
             Map<String, Double> properties = new HashMap<>();
@@ -108,7 +110,7 @@ public class createSquare extends javax.swing.JDialog {
         
             Square square = new Square(position, properties);
             mainWindow.draw.addShape(square);
-            square.draw(canvas);
+            square.draw(canvas.getGraphics());
      
             items.addItem("Square" + mainWindow.num);
             mainWindow.num++;
