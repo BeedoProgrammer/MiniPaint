@@ -7,11 +7,13 @@ public class Colorize extends javax.swing.JDialog {
 
     private Graphics canvas;
     private JComboBox<String> items;
+    private mainWindow main;
     
     public Colorize(mainWindow main, String title, Graphics canvas, JComboBox<String> items) {
         super(main, title, true);
         this.canvas = canvas;
         this.items = items;
+        this.main = main;
         initComponents();
     }
 
@@ -68,8 +70,7 @@ public class Colorize extends javax.swing.JDialog {
         shapes[index].setColor(color.getColor());
         shapes[index].setFillColor(color.getColor());
        
-        mainWindow.draw.refresh(canvas);
-       
+        main.repaint();
         this.dispose();
     }//GEN-LAST:event_colorizeActionPerformed
 

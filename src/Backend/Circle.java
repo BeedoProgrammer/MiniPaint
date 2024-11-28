@@ -23,7 +23,7 @@ public class Circle extends template {
     @Override
     public String toString(){
         String str = super.toString();
-        str = str + "," + String.valueOf(getProperties().get("radius"));
+        str = str + ", " + String.valueOf(getProperties().get("radius"));
         return str;
     }
 }

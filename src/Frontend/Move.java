@@ -8,11 +8,13 @@ public class Move extends javax.swing.JDialog {
 
     private Graphics canvas;
     private JComboBox<String> items;
+    private mainWindow main;
     
     public Move(mainWindow main, String title, Graphics canvas, JComboBox<String> items) {
         super(main, title, true);
         this.canvas = canvas;
         this.items = items;
+        this.main = main;
         initComponents();
     }
 
@@ -103,8 +105,7 @@ public class Move extends javax.swing.JDialog {
                 shapes[index].setProperties(new_properties);
             }
             
-            canvas.clearRect(0, 0, getWidth(), getHeight());
-            mainWindow.draw.refresh(canvas);
+            main.repaint();
             this.dispose();
         }
     }//GEN-LAST:event_moveActionPerformed

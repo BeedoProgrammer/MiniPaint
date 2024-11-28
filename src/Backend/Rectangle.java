@@ -24,7 +24,7 @@ public class Rectangle extends template {
     @Override
     public String toString(){
         String str = super.toString();
-        str = str + "," + String.valueOf(getProperties().get("length")) + "," + String.valueOf(getProperties().get("width"));
+        str = str + ", " + String.valueOf(getProperties().get("length")) + ", " + String.valueOf(getProperties().get("width"));
         return str;
     }
 }

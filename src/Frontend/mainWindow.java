@@ -1,9 +1,10 @@
 package Frontend;
 
 import Backend.*;
+import java.awt.*;
 import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.*;
+import java.util.logging.*;
 import javax.swing.*;
 
 public class mainWindow extends javax.swing.JFrame {
@@ -30,211 +31,226 @@ public class mainWindow extends javax.swing.JFrame {
         color = new javax.swing.JButton();
         delete = new javax.swing.JButton();
         items = new javax.swing.JComboBox<>();
-        canvas = new java.awt.Canvas();
         resize = new javax.swing.JButton();
         move = new javax.swing.JButton();
         save = new javax.swing.JButton();
         load = new javax.swing.JButton();
+        canvas = new javax.swing.JPanel(){
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                draw.refresh(g);
+            }};
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        square.setBackground(new java.awt.Color(0, 0, 0));
-        square.setForeground(new java.awt.Color(255, 255, 255));
-        square.setText("Square");
-        square.setFocusPainted(false);
-        square.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                squareActionPerformed(evt);
-            }
-        });
+            square.setBackground(new java.awt.Color(0, 0, 0));
+            square.setForeground(new java.awt.Color(255, 255, 255));
+            square.setText("Square");
+            square.setFocusPainted(false);
+            square.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    squareActionPerformed(evt);
+                }
+            });
 
-        circle.setBackground(new java.awt.Color(0, 0, 0));
-        circle.setForeground(new java.awt.Color(255, 255, 255));
-        circle.setText("Circle");
-        circle.setFocusPainted(false);
-        circle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                circleActionPerformed(evt);
-            }
-        });
+            circle.setBackground(new java.awt.Color(0, 0, 0));
+            circle.setForeground(new java.awt.Color(255, 255, 255));
+            circle.setText("Circle");
+            circle.setFocusPainted(false);
+            circle.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    circleActionPerformed(evt);
+                }
+            });
 
-        rectangle.setBackground(new java.awt.Color(0, 0, 0));
-        rectangle.setForeground(new java.awt.Color(255, 255, 255));
-        rectangle.setText("Rectangle");
-        rectangle.setFocusPainted(false);
-        rectangle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rectangleActionPerformed(evt);
-            }
-        });
+            rectangle.setBackground(new java.awt.Color(0, 0, 0));
+            rectangle.setForeground(new java.awt.Color(255, 255, 255));
+            rectangle.setText("Rectangle");
+            rectangle.setFocusPainted(false);
+            rectangle.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    rectangleActionPerformed(evt);
+                }
+            });
 
-        line.setBackground(new java.awt.Color(0, 0, 0));
-        line.setForeground(new java.awt.Color(255, 255, 255));
-        line.setText("Line Segment");
-        line.setFocusPainted(false);
-        line.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lineActionPerformed(evt);
-            }
-        });
+            line.setBackground(new java.awt.Color(0, 0, 0));
+            line.setForeground(new java.awt.Color(255, 255, 255));
+            line.setText("Line Segment");
+            line.setFocusPainted(false);
+            line.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    lineActionPerformed(evt);
+                }
+            });
 
-        jLabel1.setText("Select Shape");
+            jLabel1.setText("Select Shape");
 
-        color.setBackground(new java.awt.Color(0, 0, 0));
-        color.setForeground(new java.awt.Color(255, 255, 255));
-        color.setText("Colorize");
-        color.setFocusPainted(false);
-        color.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                colorActionPerformed(evt);
-            }
-        });
+            color.setBackground(new java.awt.Color(0, 0, 0));
+            color.setForeground(new java.awt.Color(255, 255, 255));
+            color.setText("Colorize");
+            color.setFocusPainted(false);
+            color.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    colorActionPerformed(evt);
+                }
+            });
 
-        delete.setBackground(new java.awt.Color(0, 0, 0));
-        delete.setForeground(new java.awt.Color(255, 255, 255));
-        delete.setText("Delete");
-        delete.setFocusPainted(false);
-        delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteActionPerformed(evt);
-            }
-        });
+            delete.setBackground(new java.awt.Color(0, 0, 0));
+            delete.setForeground(new java.awt.Color(255, 255, 255));
+            delete.setText("Delete");
+            delete.setFocusPainted(false);
+            delete.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    deleteActionPerformed(evt);
+                }
+            });
 
-        items.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemsActionPerformed(evt);
-            }
-        });
+            items.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    itemsActionPerformed(evt);
+                }
+            });
 
-        canvas.setBackground(new java.awt.Color(255, 255, 255));
-        canvas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            resize.setBackground(new java.awt.Color(0, 0, 0));
+            resize.setForeground(new java.awt.Color(255, 255, 255));
+            resize.setText("Resize");
+            resize.setFocusPainted(false);
+            resize.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    resizeActionPerformed(evt);
+                }
+            });
 
-        resize.setBackground(new java.awt.Color(0, 0, 0));
-        resize.setForeground(new java.awt.Color(255, 255, 255));
-        resize.setText("Resize");
-        resize.setFocusPainted(false);
-        resize.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resizeActionPerformed(evt);
-            }
-        });
+            move.setBackground(new java.awt.Color(0, 0, 0));
+            move.setForeground(new java.awt.Color(255, 255, 255));
+            move.setText("Move");
+            move.setFocusPainted(false);
+            move.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    moveActionPerformed(evt);
+                }
+            });
 
-        move.setBackground(new java.awt.Color(0, 0, 0));
-        move.setForeground(new java.awt.Color(255, 255, 255));
-        move.setText("Move");
-        move.setFocusPainted(false);
-        move.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                moveActionPerformed(evt);
-            }
-        });
+            save.setBackground(new java.awt.Color(0, 0, 0));
+            save.setForeground(new java.awt.Color(255, 255, 255));
+            save.setText("Save");
+            save.setFocusPainted(false);
+            save.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    saveActionPerformed(evt);
+                }
+            });
 
-        save.setBackground(new java.awt.Color(0, 0, 0));
-        save.setForeground(new java.awt.Color(255, 255, 255));
-        save.setText("Save");
-        save.setFocusPainted(false);
-        save.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveActionPerformed(evt);
-            }
-        });
+            load.setBackground(new java.awt.Color(0, 0, 0));
+            load.setForeground(new java.awt.Color(255, 255, 255));
+            load.setText("Load");
+            load.setFocusPainted(false);
+            load.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    loadActionPerformed(evt);
+                }
+            });
 
-        load.setBackground(new java.awt.Color(0, 0, 0));
-        load.setForeground(new java.awt.Color(255, 255, 255));
-        load.setText("Load");
-        load.setFocusPainted(false);
-        load.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loadActionPerformed(evt);
-            }
-        });
+            canvas.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(56, 56, 56)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(items, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(save)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(load)))
-                        .addGap(4, 4, 4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(color)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(delete))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(resize, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(move, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+            javax.swing.GroupLayout canvasLayout = new javax.swing.GroupLayout(canvas);
+            canvas.setLayout(canvasLayout);
+            canvasLayout.setHorizontalGroup(
+                canvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 0, Short.MAX_VALUE)
+            );
+            canvasLayout.setVerticalGroup(
+                canvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 413, Short.MAX_VALUE)
+            );
+
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+            getContentPane().setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(56, 56, 56)
+                                    .addComponent(jLabel1))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(24, 24, 24)
+                                    .addComponent(items, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(save)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(load)))
+                            .addGap(4, 4, 4))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(color)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(delete))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(resize, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(move, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGap(8, 8, 8)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(circle)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                            .addComponent(line)
+                            .addGap(65, 65, 65)
+                            .addComponent(square)
+                            .addGap(87, 87, 87)
+                            .addComponent(rectangle))
+                        .addComponent(canvas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap())
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(28, 28, 28)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(save)
+                        .addComponent(load)
                         .addComponent(circle)
-                        .addGap(99, 99, 99)
                         .addComponent(line)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(square)
-                        .addGap(122, 122, 122)
                         .addComponent(rectangle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(canvas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(rectangle))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(circle, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(line, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(square, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(canvas, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(save)
-                            .addComponent(load))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(items, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(color)
-                            .addComponent(delete))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(resize)
-                            .addComponent(move))))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
+                    .addGap(18, 18, 18)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(items, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(22, 22, 22)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(color)
+                                .addComponent(delete))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(resize)
+                                .addComponent(move)))
+                        .addComponent(canvas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(19, Short.MAX_VALUE))
+            );
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+            pack();
+        }// </editor-fold>//GEN-END:initComponents
 
+    private Color stringToColor(String str) {
+        String values = str.substring(str.indexOf('[') + 1, str.indexOf(']'));
+        String[] parts = values.split(",");
+        
+        int r = Integer.parseInt(parts[0].split("=")[1].trim());
+        int g = Integer.parseInt(parts[1].split("=")[1].trim());
+        int b = Integer.parseInt(parts[2].split("=")[1].trim());
+        
+        return new Color(r, g, b);
+    }
+    
     private void squareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_squareActionPerformed
         // TODO add your handling code here:
         createSquare square = new createSquare(this, "Draw Square", canvas.getGraphics(), items);
@@ -283,8 +299,7 @@ public class mainWindow extends javax.swing.JFrame {
             draw.removeShape(shapes[index]);
             items.removeItemAt(index);
             
-            canvas.getGraphics().clearRect(0, 0, getWidth(), getHeight());
-            draw.refresh(canvas.getGraphics());
+            repaint();
             num--;
         }
         else
@@ -356,7 +371,7 @@ public class mainWindow extends javax.swing.JFrame {
                     writer = new FileWriter(save);
                     for (int i = 0; i < count; i++) {
                         name = (String) items.getItemAt(i);
-                        str = shapes[i].toString() + "," + name;
+                        str = shapes[i].toString() + ", " + name;
                         writer.write(str);
                     }   JOptionPane.showMessageDialog(rootPane, "Shapes saved successfully!");
                 } catch (IOException ex) {
@@ -376,10 +391,105 @@ public class mainWindow extends javax.swing.JFrame {
 
     private void loadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadActionPerformed
         // TODO add your handling code here:
+        JFileChooser choose = new JFileChooser();
+        
+        choose.setDialogTitle("Load Shapes");
+        int returnValue = choose.showDialog(null, "Load");
+        
+        if (returnValue == JFileChooser.APPROVE_OPTION){
+            try {
+                File load = choose.getSelectedFile();
+                Scanner scan = new Scanner(load);
+                
+                if (items.getModel().getSize() != 0){
+                    mainWindow.num = 0;
+                
+                    Backend.Shape[] shapes = mainWindow.draw.getShapes();
+                    for(int i = 0; i < shapes.length; i++){
+                        draw.removeShape(shapes[i]);
+                        items.removeItemAt(i);
+                    } 
+                    
+                    repaint();
+                }
+                
+                String data;
+                while(scan.hasNextLine()){
+                    data = scan.nextLine();
+                    
+                    if(data.trim().isEmpty())
+                        continue;
+                    
+                    String[] arr = data.split(", ");
+                    
+                    if(arr[arr.length - 1].charAt(0) == 'L'){
+                        Point position = new Point(Integer.parseInt(arr[2]), Integer.parseInt(arr[3]));
+                        Map<String, Double> properties = new HashMap<>();
+                        properties.put("x2", Double.parseDouble(arr[4]));
+                        properties.put("y2", Double.parseDouble(arr[5]));
+                        
+                        Line line = new Line(position, properties);
+                        mainWindow.draw.addShape(line);
+                        line.setColor(stringToColor(arr[1]));
+                        line.setFillColor(stringToColor(arr[0]));
+                        line.draw(canvas.getGraphics());
+                        
+                        items.addItem(arr[arr.length - 1]);
+                        mainWindow.num++;
+                    }
+                    else if(arr[arr.length - 1].charAt(0) == 'S'){
+                        Point position = new Point(Integer.parseInt(arr[2]), Integer.parseInt(arr[3]));
+                        Map<String, Double> properties = new HashMap<>();
+                        properties.put("length", Double.parseDouble(arr[4]));
+                        
+                        Square square = new Square(position, properties);
+                        mainWindow.draw.addShape(square);
+                        square.setColor(stringToColor(arr[1]));
+                        square.setFillColor(stringToColor(arr[0]));
+                        square.draw(canvas.getGraphics());
+                        
+                        items.addItem(arr[arr.length - 1]);
+                        mainWindow.num++;
+                    }
+                    else if(arr[arr.length - 1].charAt(0) == 'C'){
+                        Point position = new Point(Integer.parseInt(arr[2]), Integer.parseInt(arr[3]));
+                        Map<String, Double> properties = new HashMap<>();
+                        properties.put("radius", Double.parseDouble(arr[4]));
+                        
+                        Circle circle = new Circle(position, properties);
+                        mainWindow.draw.addShape(circle);
+                        circle.setColor(stringToColor(arr[1]));
+                        circle.setFillColor(stringToColor(arr[0]));
+                        circle.draw(canvas.getGraphics());
+                        
+                        items.addItem(arr[arr.length - 1]);
+                        mainWindow.num++;
+                    }
+                    else if(arr[arr.length - 1].charAt(0) == 'R'){
+                        Point position = new Point(Integer.parseInt(arr[2]), Integer.parseInt(arr[3]));
+                        Map<String, Double> properties = new HashMap<>();
+                        properties.put("length", Double.parseDouble(arr[4]));
+                        properties.put("width", Double.parseDouble(arr[5]));
+                        
+                        Backend.Rectangle rectangle = new Backend.Rectangle(position, properties);
+                        mainWindow.draw.addShape(rectangle);
+                        rectangle.setColor(stringToColor(arr[1]));
+                        rectangle.setFillColor(stringToColor(arr[0]));
+                        rectangle.draw(canvas.getGraphics());
+                        
+                        items.addItem(arr[arr.length - 1]);
+                        mainWindow.num++;
+                    }
+                }
+                scan.close();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(mainWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_loadActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Canvas canvas;
+    private javax.swing.JPanel canvas;
     private javax.swing.JButton circle;
     private javax.swing.JButton color;
     private javax.swing.JButton delete;

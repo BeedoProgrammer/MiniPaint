@@ -8,11 +8,13 @@ public class ResizeLine extends javax.swing.JDialog {
 
     private Graphics canvas;
     private JComboBox<String> items;
+    private mainWindow main;
     
     public ResizeLine(mainWindow main, String title, Graphics canvas, JComboBox<String> items) {
         super(main, title, true);
         this.canvas = canvas;
         this.items = items;
+        this.main = main;
         initComponents();
     }
 
@@ -96,8 +98,7 @@ public class ResizeLine extends javax.swing.JDialog {
             properties.put("y2", Double.parseDouble(posy2.getText()));
             
             shapes[index].setProperties(properties);
-            canvas.clearRect(0, 0, getWidth(), getHeight());
-            mainWindow.draw.refresh(canvas);
+            main.repaint();
             this.dispose();
         }
     }//GEN-LAST:event_resizeActionPerformed

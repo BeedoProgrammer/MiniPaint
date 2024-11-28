@@ -20,7 +20,7 @@ public class Line extends template {
     @Override
     public String toString(){
         String str = super.toString();
-        str = str + "," + String.valueOf(getProperties().get("x2")) + "," + String.valueOf(getProperties().get("y2"));
+        str = str + ", " + String.valueOf(getProperties().get("x2")) + ", " + String.valueOf(getProperties().get("y2"));
         return str;
     }
 }

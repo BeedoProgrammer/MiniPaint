@@ -63,7 +63,7 @@ public abstract class template implements Shape {
     
     @Override
     public String toString(){
-        String str = "\n" + String.valueOf(getFillColor()) + "," + String.valueOf(getColor()) + "," + String.valueOf(getPosition().x) + "," + String.valueOf(getPosition().y);
+        String str = "\n" + String.valueOf(getFillColor()) + ", " + String.valueOf(getColor()) + ", " + String.valueOf(getPosition().x) + ", " + String.valueOf(getPosition().y);
         return str;
     }
 }

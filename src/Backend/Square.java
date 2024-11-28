@@ -23,7 +23,7 @@ public class Square extends template {
     @Override
     public String toString(){
         String str = super.toString();
-        str = str + "," + String.valueOf(getProperties().get("length"));
+        str = str + ", " + String.valueOf(getProperties().get("length"));
         return str;
     }
 }
