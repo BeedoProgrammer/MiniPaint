@@ -253,8 +253,6 @@ public class mainWindow extends javax.swing.JFrame {
     
     private void squareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_squareActionPerformed
         // TODO add your handling code here:
-        System.out.println(canvas.getWidth());
-        System.out.println(canvas.getHeight());
         createSquare square = new createSquare(this, "Draw Square", canvas, items);
         square.setLocationRelativeTo(null);
         square.setVisible(true);
