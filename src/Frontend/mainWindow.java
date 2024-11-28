@@ -405,7 +405,7 @@ public class mainWindow extends javax.swing.JFrame {
                     mainWindow.num = 0;
                 
                     Backend.Shape[] shapes = mainWindow.draw.getShapes();
-                    for(int i = 0; i < shapes.length; i++){
+                    for(int i = shapes.length - 1; i >= 0; i--){
                         draw.removeShape(shapes[i]);
                         items.removeItemAt(i);
                     } 
